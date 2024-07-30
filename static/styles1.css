@@ -1,0 +1,152 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 24px;
+    text-align: left;
+    background: linear-gradient(90deg, rgba(188, 225, 82, 0.8) , rgba(4, 161, 249, 0.3));
+}
+
+header{
+    text-align: center;
+    margin-top: 24px;  
+}
+
+h1{
+    font-weight: 500;
+    color: #333;
+}
+
+.user{
+    border-radius: 50%;
+    background-color: darkcyan;
+    color: #fff;
+    height: 40px;
+    width: 40px;
+    text-align:center;
+    font-weight:600;
+}
+
+#logout{
+    background-color: #0077cc;
+    border: none;
+}
+
+.container{
+    padding: 24px;
+}
+
+.my-3{
+    border: 2px solid grey;
+    border-radius: 24px;
+    margin: auto;
+    padding-right: 50px;
+    align-content: space-between;
+}
+
+.form-select,.form-control{
+    max-width: 350px;
+}
+
+.form-label{
+    margin: 24px 0 0 0;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+#submit{
+    margin: 24px 0 24px 0;
+    background-color: #0077cc;
+    padding: 8px 24px;
+    transition: .2s ease;
+    border: none;
+    border-radius: 8px;
+}
+
+#submit:hover,
+#display:hover,
+#notify:hover{
+    background-color: #20c997;
+}
+
+#submit1{
+    width: 90px;
+    padding: 8px 24px;
+    transition: .2s ease;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.btn-outline-dark:hover{
+    background-color: rgba(0,0,0,0);
+    color: black;
+}
+
+#notify{
+    color: #fff;
+    background-color: #0077cc;
+    padding: 8px 24px;
+    transition: .2s ease;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    width: 90px;
+}
+
+#notify a{
+    text-decoration: none;
+    color: #fff;
+}
+
+#list span {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 3px;
+}
+
+#list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#list li {
+    margin: 5px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 5px;
+    max-width: 1275px;
+}
+
+#list ul li button, .custom-file-upload {
+    display: inline-block;
+    margin-bottom: 3px;
+    padding: 4px 8px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #0077cc;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 12px;
+}
+
+#list ul li button:hover, .custom-file-upload:hover {
+    background-color: #0056b3;
+}
+
+#list ul li a {
+    background-color: #0077cc;
+    color: #fff;
+    font-size: 12px;
+    text-decoration: none;
+    padding: 6px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+#list ul li a:hover{
+    background-color: #0056b3;
+}
+
+input[type="file"] {
+    display: none;
+}

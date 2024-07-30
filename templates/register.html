@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperAdmin</title>
+    <link rel="stylesheet" href="static/bootstrap.css">
+    <link href="static/register.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>    
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary mb-3 mt-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#" style="color: darkolivegreen;">Notify<span style="color:rgba(4, 161, 249);">EDU</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="nav nav-underline">            
+                    {% if msg111 %}
+                    <li class="nav-item">
+                        <a class="nav-link active" id="tab1-tab" href="/dashboard">Dashboard</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" id="tab1-tab" href="/dashboard">Dashboard</a>
+                    </li>
+                    {% endif %}
+
+                    {% if msg222 %}
+                    <li class="nav-item">
+                        <a class="nav-link active" id="tab2-tab" href="/register1">Registration</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" id="tab1-tab" href="/register1">Registration</a>
+                    </li>
+                    {% endif %}
+
+                    {% if msg333 %}
+                    <li class="nav-item">
+                        <a class="nav-link active" id="tab1-tab" href="/">Edit</a>
+                    </li>
+                    {% endif %}
+   
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item" style="color: #0077cc;">
+                        <a class="nav-link active" style="color: #0077cc;" aria-current="page" href="/goto">Go To HomePage
+                            <i class="fas fa-arrow-right me-1"></i>
+                        </a>
+                    </li>
+                </ul>
+              </div>
+            </div>
+        </nav>
+    </header>
+    
+    {% if msg6 or msg9 %}
+    <div class="container">
+        <h2>Registration</h2>
+
+        {% if msg5 %}
+            <h6 style="color:red">Username already exist</h6>
+        {% endif %}
+        <h3></h3>
+
+        {% if msg9 %}
+        <div class="alert alert-success" role="alert">
+            User Added Successfully!
+          </div>
+        {% endif %}
+        
+        <form method="POST" action="/register">
+            <label for="role">Register as:</label>
+            <select class="form-select" name="role" id="role" aria-label="Default select example" onchange="toggleBranchField()">
+                <option selected>Admin</option>
+                <option>Verifier</option>
+            </select>
+
+
+            <label for="branch" id="branch-label" class="branch-label">Select Branch:</label>
+            <select class="form-select" id="branch-field" name="branch" required>
+                <option value="IT">IT</option>
+                <option value="COMP">COMP</option>
+                <option value="AIDS">AIDS</option>
+                <option value="ENTC">ENTC</option>
+            </select>
+
+            <div class="input-group mb-3">
+                <input type="email" id="email" name="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" id="username" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <div class="password-toggle">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" aria-label="Password" aria-describedby="basic-addon2">
+                    <i class="far fa-eye" id="showPasswordIcon"></i>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary col-md-12 text-center" id="register">Register</button>
+        </form>
+    </div>
+    {% endif %}
+
+    {% if msg7 %}
+    <div>
+        {% if allNotices_detailss|length !=0  %}
+            <div style="overflow-x:auto;">
+                
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">SNO</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">Branch</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Password</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Delete</th>
+                            <th scope="col">Update</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for Notices_details in allNotices_detailss %}
+                        <tr>
+                            <th scope="row">{{loop.index}}</th>
+                            <th scope="row">{{Notices_details.role}}</th>
+                            <th scope="row">{{Notices_details.branch}}</th>
+                            <th scope="row">{{Notices_details.title}}</th>
+                            <td>{{Notices_details.desc}}</td>
+                            <td>{{Notices_details.email}}</td>
+                            <td>
+                                <a href="/delete1/{{Notices_details.sno}}" onclick="return confirm('Are you sure you want to proceed?');" type="button" class="btn btn-danger btn-sm mx-1">Delete</button>
+                            </td>
+                            
+                            <td><a href="/edit/{{Notices_details.sno}}" type="button" class="btn btn-primary btn-sm mx-1">Edit</a></td>
+                        </tr>
+                        {% endfor %}
+    
+                    </tbody>
+                </table>
+            </div>
+                
+        {% endif %}
+    </div>
+    {% endif %}
+
+    {% if msg8 %}
+    <div class="container">
+        <h2>Edit Info</h2>
+        <form method="POST" action="/update">
+            <div class="input-group mb-3">
+                <input type="email" id="email" name="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" id="username" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <div class="password-toggle">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" aria-label="Password" aria-describedby="basic-addon2">
+                    <i class="far fa-eye" id="showPasswordIcon"></i>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary col-md-12 text-center" id="register">Edit</button>
+        </form>
+    </div>
+    {% endif %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        
+        function toggleBranchField() {
+            var role = document.getElementById("role").value;
+            var branchField = document.getElementById("branch-field");
+            var branchLabel = document.getElementById("branch-label");
+
+            if (role === "Verifier") {
+                branchField.style.display = "block";
+                branchLabel.style.display = "block";
+            } else {
+                branchField.style.display = "none";
+                branchLabel.style.display = "none";
+            }
+        }
+
+        $(document).ready(function() {
+            $('#showPasswordIcon').click(function(){
+                const passwordInput = $('#password');
+                const type = passwordInput.attr('type') === 'password' ? 'text' : 'password';
+                passwordInput.attr('type', type);
+                $(this).toggleClass('fa-eye fa-eye-slash');
+            });
+        });
+    </script>
+
+</body>
+</html>

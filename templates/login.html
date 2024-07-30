@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="static/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(90deg, rgba(188, 225, 82, 0.8) , rgba(4, 161, 249, 0.3));
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        header{
+            text-align: center;
+            margin-top: 24px;
+        }
+
+        h1, h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p{
+            color: red;
+        }
+
+        img{
+            height: 150px;
+            width: auto;
+        }
+
+        section{
+            padding: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        label {
+            text-align: left;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #0077cc;
+        }
+
+        .form-select{
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-select:focus{
+            border-color: #0077cc;
+        }
+        
+
+        button {
+            width: 100%;
+            background-color: #0077cc;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            padding: 12px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #005faa;
+        }
+
+        button:active {
+            background-color: #004b8e;
+        }
+
+        .password-toggle {
+            position: relative;
+            width: 100%;
+        }
+
+        .password-toggle i {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }       
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to VPKBIET, Baramati Fee Portal</h1>
+    </header>
+    <section>
+        <div class="container">
+            <h2>Login</h2>
+            <img id="img1" src="static/image1.png">
+            {% if msg %}
+                <p>{{ msg }}</p>
+            {% endif %}
+            <form method="POST" action="/login">
+                <label for="select">Login as:</label>
+                <select class="form-select" name="role" id="select" aria-label="Default select example">
+                    <option selected>Admin</option>
+                    <option>Verifier</option>   
+                </select>
+                <div class="input-group mb-3">
+                    <input type="text" id="username" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="password-toggle">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" aria-label="Password" aria-describedby="basic-addon2">
+                        <i class="far fa-eye" id="showPasswordIcon"></i>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary col-md-12 text-center">Login</button>
+
+                <!-- <p class="mt-2"><a href="/superadmin" style="color: #0077cc;">Forgot Password ?</a></p> -->
+                <!-- {% if msg6 %}
+                    <button class="btn btn-primary col-md-12 text-center"><a href="/superadmin">Generate OTP</a></button>
+                {% endif %} -->
+
+    
+            </form>
+            <hr>
+            {% if msg7==1 %}
+            <form action="/login5" method="POST">
+                <label for="otp">Enter your otp sent to registered email</label>
+                <input type="password" placeholder="Enter your OTP" id="otp" class="otp" name="otp" style="border:0.5px solid black">
+                <button class="btn btn-primary col-md-12 text-center" type="submit"></button>
+            </form>
+                {% elif msg7==2 %}
+                    <p>Mail Not sent</p>+
+            {% endif %}
+    
+            {% if msg8 %}
+                <p>Invalid OTP</p>
+            {% endif %}
+        </div>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#showPasswordIcon').click(function(){
+                const passwordInput = $('#password');
+                const type = passwordInput.attr('type') === 'password' ? 'text' : 'password';
+                passwordInput.attr('type', type);
+                $(this).toggleClass('fa-eye fa-eye-slash');
+            });
+        });
+    </script>
+
+</body>
+</html>

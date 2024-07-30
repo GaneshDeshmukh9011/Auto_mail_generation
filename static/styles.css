@@ -1,0 +1,136 @@
+body{
+    background: linear-gradient(90deg, rgba(188, 225, 82, 0.8) , rgba(4, 161, 249, 0.3));
+}
+
+a{
+    text-decoration: none;
+}
+
+.user{
+    border-radius: 50%;
+    background-color: darkcyan;
+    color: #fff;
+    height: 40px;
+    width: 40px;
+    font-weight:600;
+    text-align:center;
+}
+
+h1,.um{
+    font-weight:500;
+    color: #333;
+}
+
+header{
+    text-align: center;
+    margin-top: 24px;
+}
+
+.container{
+    padding: 24px;
+}
+
+.my-3{
+    border: 2px solid grey;
+    border-radius: 24px;
+    margin: auto;
+    padding-right: 50px;
+    align-content: space-between;
+}
+
+.form-label{
+    margin: 24px 0 0 24px;
+    font-size: 16px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.form-select{
+    max-width: 300px;
+    margin-left: 24px;
+    border: 1px solid grey;
+}
+
+form input[type="file"]{
+    margin-left: 24px;
+}
+
+h6{
+    margin-left: 24px;
+}
+
+#file{
+    margin-top: 24px;
+}
+
+#submit{
+    margin: 24px;
+    background-color: #0077cc;
+    padding: 8px 24px;
+    transition: .2s ease;
+    border: none;
+    border-radius: 8px;
+}
+
+#submit:hover,#display:hover,#send:hover{
+    background-color: #20c997;
+}
+
+#display{
+    background: #0077cc;
+    margin: 0 0 24px 24px;
+    border: none;
+    transition: .2s ease;
+    border-radius: 8px;
+    padding: 8px 24px;
+}
+
+#display a{
+    margin: auto;
+    text-decoration: none;
+    color: white;
+}
+
+.mt-3 .form-select{
+    max-width: 300px;
+    margin: 24px 0 0 24px;
+    border: 1px solid grey;
+}
+
+.table tr{
+    border-radius: 8px;
+}
+
+.table th,
+.table td {
+    border: 0.5px solid grey;
+    padding: 8px;
+}
+
+.btn-outline-dark:hover{
+    background-color: white;
+    color: black;
+}
+
+#send{
+    background-color: #0077cc;
+    border: none;
+}
+
+#notify{
+    margin-left: -24px;
+}
+
+.alert.alert-success{
+    font-size: 16px;
+    margin:16px 16px 0 16px;
+    padding: 4px 8px;
+}
+
+.alert.alert-danger{
+    font-size: 16px;
+    margin:16px 16px 0 16px;
+    padding: 4px 8px;
+}
